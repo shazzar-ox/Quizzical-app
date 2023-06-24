@@ -1,0 +1,69 @@
+body {
+  /* background-image: url('./body.jpg'); */
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'spectral';
+ font-weight: bolder; 
+
+  /* filter: blur(8px); */
+}
+.main-page1 {
+  /* background-color: aliceblue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10%;
+  /* gap: 10px; */
+}
+.main-page1 > h1 {
+  font-size: 35px;
+  font-weight: bolder;
+  color: white;
+}
+.main-page1 > h3 {
+  font-size: 35px;
+  font-weight: bold;
+  color: wheat;
+}
+/* .body-contain{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.pageone-btn {
+  padding: 3% 8%;
+  border-radius: 10px;
+  border: none;
+  background-color: cyan;
+  color: black;
+  font-size: 30px;
+  width: 180px;
+  cursor: pointer;
+  font-family: 'spectral';
+ font-weight: bolder; 
+}
+/* Hide the default radio button */
+input[type="radio"] {
+  display: none;
+}
+
+/* Style the label as a button */
+label.radio-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: 1px solid bisque;
+  /* border: none; */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Change the background color when the radio button is checked */
+/* input[type="radio"]:checked + label.radio-button {
+    /* background-color: #333; */
+/* color: #fff;/ */
+/* }  */

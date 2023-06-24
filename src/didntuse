@@ -1,0 +1,118 @@
+import React, { useEffect, useState } from "react";
+import { decode } from "html-entities";
+import { nanoid } from "nanoid";
+const EachQuestion = ({ question, incorrect, correct }) => {
+  const [varable, setVariable] = useState([]);
+  const [answer, setAnswer] = useState([]);
+  //   const [count, setCount] = useState(0)
+
+  //   useEffect(() => {
+  //     const randomQuestionMaker = Math.ceil(Math.random() * incorrect.length);
+  //     incorrect.splice(randomQuestionMaker, 0, correct);
+  //     const questionArray = incorrect;
+  //     const [one, two, three, four] = questionArray;
+
+  //     setVariable([one, two, three, four]);
+  //     setAnswer((prev) => [...prev, correct]);
+  //   }, []);
+
+  let [one, two, three, four] = incorrect;
+  one = decode(one);
+  two = decode(two);
+  three = decode(three);
+  four = decode(four);
+  const [selector, setSelector] = useState([
+    {
+      id: 1,
+      picked: false,
+      value: "",
+    },
+    {
+      id: 2,
+      picked: false,
+      value: "",
+    },
+    { id: 3, picked: false, value: "" },
+    {
+      id: 4,
+      picked: false,
+      value: "",
+    },
+  ]);
+
+  const btnClick = (event) => {
+    setSelector((prev) =>
+      prev.map((each) => (each.id ? { ...each, picked: false } : each))
+    );
+    const id = varable.indexOf(event) + 1;
+    console.log(id);
+    console.log(event);
+    // document.getElementById(event).style.backgroundColor = "green"
+    // setColor(!color)
+
+    setSelector((prev) =>
+      prev.map((each) =>
+        id === each.id ? { ...each, picked: !each.picked } : each
+      )
+    );
+
+    // const [value] = event.target
+    // console.log('clicked', value);
+  };
+  // console.log(varable)
+  // console.log(selector[1].picked)
+  console.log(selector);
+  console.log(answer);
+
+  return (
+    <>
+      <h2 style={{ color: "orange" }}>{decode(question)}</h2>
+      <div>
+        <input type="radio" id={one} name="radio-button-group" />
+        <label
+          for={one}
+          id="one"
+          style={{ backgroundColor: selector[0].picked ? "yellow" : "" }}
+          onClick={() => btnClick(one)}
+          class="radio-button"
+        >
+          {one}
+        </label>
+
+        <input type="radio" id={two} name="radio-button-group" />
+        <label
+          for={two}
+          class="radio-button"
+          style={{ backgroundColor: selector[1].picked ? "yellow" : "" }}
+          onClick={() => btnClick(two)}
+        >
+          {two}
+        </label>
+
+        <input type="radio" id={three} name="radio-button-group" />
+        <label
+          htmlFor={three}
+          style={{ backgroundColor: selector[2].picked ? "yellow" : "" }}
+          onClick={() => btnClick(three)}
+          class="radio-button"
+        >
+          {three}
+        </label>
+
+        <input type="radio" id={four} name="radio-button-group" />
+        <label
+          htmlFor={four}
+          style={{ backgroundColor: selector[3].picked ? "yellow" : "" }}
+          onClick={() => btnClick(four)}
+          class="radio-button"
+        >
+          {four}
+        </label>
+
+        <button>hdhdh</button>
+      </div>
+    </>
+  );
+};
+
+export default EachQuestion;
