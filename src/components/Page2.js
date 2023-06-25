@@ -13,10 +13,14 @@ const Page2 = () => {
 
 
 
+
+
+
+
   useEffect(() => {
 
     // fetch('https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple')
-    fetch('https://opentdb.com/api.php?amount=5&category=9&difficulty=hard&type=multiple')
+    fetch('https://opentdb.com/api.php?amount=15&category=18&difficulty=medium&type=multiple')
       .then(res => res.json())
       .then(data => { setSelector(data.results) })
       .catch(err => console.error(`this ${err}`))
@@ -61,21 +65,21 @@ const Page2 = () => {
 
     }
     setResetGame(prev => !prev)
-
-
   }
 
+  const numberSetter = (val) => {
+    const value = chosenAnswer.indexOf(val) + 1
+    return value
+  }
 
-
-
-  const createDataComponent = () => chosenAnswer.length < 1 ? [] : chosenAnswer.map(each => <Secondtry correct={each.correct} incorrect={each.incorrect} question={each.question} btnClick={btnClick} selected={each.selected} disabled={each.disabled} />)
+  const createDataComponent = () => chosenAnswer.length < 1 ? [] : chosenAnswer.map(each => <Secondtry correct={each.correct} incorrect={each.incorrect} question={each.question} btnClick={btnClick} selected={each.selected} disabled={each.disabled} num={numberSetter(each)} />)
 
   return (
     <>
 
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: "8px", justifyContent: 'center', textAlign: "left" }}>
-        <h2 style={{ color: 'cyan', textAlign: 'center', fontSize: '40px' }}>Here You Go!!!</h2>
+        <h2 style={{ color: 'violet', textAlign: 'center', fontSize: '40px' }}>Here You Go!!!</h2>
         {createDataComponent()}
         {/* {data} */}
         <div style={{ display: chosenAnswer.length < 1 ? 'none' : 'flex', gap: '13px', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
