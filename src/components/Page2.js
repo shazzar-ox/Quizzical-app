@@ -13,10 +13,6 @@ const Page2 = () => {
 
 
 
-
-
-
-
   useEffect(() => {
 
     // fetch('https://opentdb.com/api.php?amount=5&category=9&difficulty=easy&type=multiple')
